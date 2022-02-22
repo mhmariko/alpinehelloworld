@@ -2,8 +2,8 @@ pipeline {
      environment {
        IMAGE_NAME = "alpinehelloworld"
        IMAGE_TAG = "latest"
-       STAGING = "eazytraining-staging"
-       PRODUCTION = "eazytraining-production"
+       STAGING = "mhconsulting-staging"
+       PRODUCTION = "mhconsulting-production"
      }
      agent none
      stages {
@@ -11,7 +11,7 @@ pipeline {
              agent any
              steps {
                 script {
-                  sh 'docker build -t eazytraining/$IMAGE_NAME:$IMAGE_TAG .'
+                  sh 'docker build -t mhconsulting/$IMAGE_NAME:$IMAGE_TAG .'
                 }
              }
         }
