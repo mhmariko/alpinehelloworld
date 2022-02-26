@@ -1,4 +1,4 @@
 # alpinehelloworld
 An Alpine-based Docker example By EAZYTraining
 
-[![Build Status](http://ip10-0-0-3-bsu2msf734ug0cfcege0-8080.direct.docker.labs.eazytraining.fr/buildStatus/icon?job=deploiement)](http://ip10-0-0-3-bsu2msf734ug0cfcege0-8080.direct.docker.labs.eazytraining.fr/job/deploiement/)
+[!http://3.251.91.213:8080/buildStatus/icon?job=alpinehelloworld!|http://3.251.91.213:8080/job/alpinehelloworld/]
