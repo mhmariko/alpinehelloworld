@@ -3,7 +3,7 @@
 
 pipeline {
      environment {
-       IMAGE_NAME = "webapp4"
+       IMAGE_NAME = "webapp5"
        IMAGE_TAG = "latest"
        STAGING = "mhconsulting-staging"
        PRODUCTION = "mhconsulting-production"
@@ -23,7 +23,7 @@ pipeline {
             steps {
                script {
                  sh '''
-                    docker run --name $IMAGE_NAME -d -p 82:82 -e PORT=81 mhconsulting/$IMAGE_NAME:$IMAGE_TAG
+                    docker run --name $IMAGE_NAME -d -p 82:82 -e PORT=82 mhconsulting/$IMAGE_NAME:$IMAGE_TAG
                     sleep 5
                  '''
                }
