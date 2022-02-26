@@ -23,7 +23,7 @@ pipeline {
             steps {
                script {
                  sh '''
-                    docker run --name $IMAGE_NAME -d -p 80:8080 -e PORT=8080 mhconsulting/$IMAGE_NAME:$IMAGE_TAG
+                    docker run --name $IMAGE_NAME -d -p 81:81 -e PORT=81 mhconsulting/$IMAGE_NAME:$IMAGE_TAG
                     sleep 5
                  '''
                }
