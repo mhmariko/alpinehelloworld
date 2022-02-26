@@ -3,7 +3,7 @@
 
 pipeline {
      environment {
-       IMAGE_NAME = "webapp3"
+       IMAGE_NAME = "webapp4"
        IMAGE_TAG = "latest"
        STAGING = "mhconsulting-staging"
        PRODUCTION = "mhconsulting-production"
