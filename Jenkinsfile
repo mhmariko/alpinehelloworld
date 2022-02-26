@@ -94,6 +94,6 @@ pipeline {
        script {
          slackNotifier currentBuild.result
           }   
-    }
-     
+         }
+        }
 }
