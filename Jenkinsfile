@@ -1,5 +1,5 @@
 /* import shared library */
-@Library('mhmariko-shared-library')_
+@Library('shared-library')_
 
 pipeline {
      environment {
