@@ -1,12 +1,12 @@
 /* import shared library */
-@Library('shared-libary')_
+@Library('shared-library')_
 
 pipeline {
      environment {
-       IMAGE_NAME = "webapp6"
+       IMAGE_NAME = "webriko"
        IMAGE_TAG = "latest"
-       STAGING = "mhconsulting-staging"
-       PRODUCTION = "mhconsulting-production"
+       STAGING = "mh-mariko-stag"
+       PRODUCTION = "mh-mariko-prod"
      }
      agent none
      stages {
@@ -14,7 +14,7 @@ pipeline {
              agent any
              steps {
                 script {
-                  sh 'docker build -t mhconsulting/$IMAGE_NAME:$IMAGE_TAG .'
+                  sh 'docker build -t mhmariko/$IMAGE_NAME:$IMAGE_TAG .'
                 }
              }
         }
@@ -23,7 +23,9 @@ pipeline {
             steps {
                script {
                  sh '''
-                    docker run --name $IMAGE_NAME -d -p 82:82 -e PORT=82 mhconsulting/$IMAGE_NAME:$IMAGE_TAG
+                    docker stop ${IMAGE_NAME} || echo "container does not exist"
+                    docker rm -f ${IMAGE_NAME} || echo "container does not exist"
+                    docker run --name $IMAGE_NAME -d -p 81:81 -e PORT=81 mhmariko/$IMAGE_NAME:$IMAGE_TAG
                     sleep 5
                  '''
                }
@@ -34,7 +36,11 @@ pipeline {
            steps {
               script {
                 sh '''
-                    curl http://localhost:82 | grep -q "Hello world!"
+                    docker stop ${IMAGE_NAME} || echo "container does not exist"
+                    docker rm -f ${IMAGE_NAME} || echo "container does not exist"
+                    docker run --name $IMAGE_NAME -d -p 81:81 -e PORT=81 smehar/$IMAGE_NAME:$IMAGE_TAG
+                    sleep 5
+                    curl http://localhost:81 | grep "Welcome"
                 '''
               }
            }
@@ -89,11 +95,11 @@ pipeline {
         }
      }
   }
-     post {
+  post {
        always {
        script {
          slackNotifier currentBuild.result
-          }   
-         }
-        }
+     }
+    }  
+    }
 }
