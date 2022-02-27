@@ -3,7 +3,7 @@
 
 pipeline {
      environment {
-       IMAGE_NAME = "webriko"
+       IMAGE_NAME = "alpinehelloworld"
        IMAGE_TAG = "latest"
        STAGING = "mh-mariko-stag"
        PRODUCTION = "mh-mariko-prod"
